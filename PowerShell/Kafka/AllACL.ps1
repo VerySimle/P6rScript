@@ -6,6 +6,8 @@ $KAFKA_ACLS = .\kafka-acls.bat --list --bootstrap-server $Broker
 
 #Pattern
 $PATTERN_ACLS_LIST = '(?m)^Current ACLs for resource \`ResourcePattern\(resourceType=TOPIC[\n\r\s\S]*?(\r\n\r\n)'
+#Group acl
+#$PATTERN_ACLS_LIST = '(?m)^Current ACLs for resource \`ResourcePattern\(resourceType=GROUP[\n\r\s\S]*?(\r\n\r\n)'
 $PATTERN_NAME_OF_TOPIC = 'name=(.*), patternType=LITERAL'
 $PATTERN_LIST_OF_VALUE = '(?m).*principal=.*$'
 
@@ -13,6 +15,8 @@ $PATTERN_LIST_OF_VALUE = '(?m).*principal=.*$'
 $fileName = 'resultACL' + $((Get-Date).ToString("yyyyMMdd")) + 'csv'
 New-Item .\$fileName -ItemType File
 Add-Content .\$fileName 'Topic;CN;Operation;Permission'
+#Group acl
+#Add-Content .\$fileName 'Name Group;CN;Operation;Permission'
 
 #Get ACLs data on Kafka
 $kafkaAclsResult = $KAFKA_ACLS | Out-String
