@@ -37,14 +37,16 @@ Constraints:
 
 ```Python
 class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
-        HashSet = set(nums)
-        iterableObj = 0
-        for x in nums:
-            if x - 1 not in HashSet:
-                y = x + 1
-                while y in HashSet:
-                    y += 1
-                iterableObj = max(iterableObj, y - x)
-        return iterableObj
+    def isValid(self, s: str) -> bool:
+        stack = []
+        closeToOpen = {")" : "(", "]" : "[", "}" : "{"}
+        for c in s:
+            if c in closeToOpen:
+                if stack and stack[-1] == closeToOpen[c]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(c)
+        return True if not stack else False
 ```
