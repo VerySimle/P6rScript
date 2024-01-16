@@ -12,7 +12,7 @@ sudo su
 ```
 2. Add user nifi and create password
 ``` bash 
-echo -e 'MangaZin#169\nMangaZin#169\n' | adduser nifi
+echo -e '<password>\n<password>\n' | adduser nifi
 ```
 3. install java-11
 ``` bash
