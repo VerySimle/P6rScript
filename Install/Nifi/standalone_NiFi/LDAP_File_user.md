@@ -36,8 +36,9 @@ systemctl daemon-reload; systemctl start nifi; tail -f nifi/logs/nifi-app.log; s
 1.8 Minimal configuration
 ``` bash
 sudo -u nifi nano nifi/conf/nifi.properties
-#nifi.web.https.host=<ip>
-#nifi.web.https.port=<port>
+nifi.remote.input.secure=false
+nifi.web.http.host=<ip>
+nifi.web.http.port=<port>
 ```
 1.9 Add user nifi
 ``` bash
